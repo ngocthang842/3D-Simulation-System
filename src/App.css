@@ -1,0 +1,489 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #0b0b0d;
+  color: #f2f2f4;
+  font-family: "Inter", "Plus Jakarta Sans", -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 40px 48px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.brand-eyebrow {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #6b6b73;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.brand-title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #f5f5f7;
+  letter-spacing: -0.01em;
+}
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #d4d4d8;
+  border: 1px solid #2c2c31;
+}
+.btn-ghost:hover {
+  border-color: #45454d;
+  background: #17171a;
+}
+
+.btn-primary {
+  background: #5b8def;
+  color: #0b0b0d;
+}
+.btn-primary:hover {
+  background: #6f9bf2;
+}
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.error-banner {
+  background: #201013;
+  border: 1px solid #6b2530;
+  color: #f2b8bf;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+.error-close {
+  background: transparent;
+  border: none;
+  color: #f2b8bf;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+/* --- 3-column layout: pipeline | 3D viewer | ảnh chụp --- */
+.layout-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr 300px;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 1300px) {
+  .layout-grid {
+    grid-template-columns: 340px 1fr;
+  }
+  .col-shots {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 900px) {
+  .layout-grid {
+    grid-template-columns: 1fr;
+  }
+  .col-shots {
+    grid-column: auto;
+  }
+}
+
+.glass-card {
+  background: #141416;
+  border: 1px solid #232327;
+  border-radius: 16px;
+  padding: 28px;
+}
+
+.col-left {
+  position: sticky;
+  top: 24px;
+}
+
+.step-block {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #1f1f23;
+}
+.step-block:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.step-head {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.step-number {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #232327;
+  border: 1px solid #2f2f35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: #d4d4d8;
+}
+
+.step-number.step-done {
+  background: #14321f;
+  border-color: #1f5c39;
+  color: #4ade80;
+}
+
+.step-title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 15px;
+  color: #f2f2f4;
+}
+
+.step-desc {
+  margin: 4px 0 0 0;
+  font-size: 13px;
+  color: #8b8b93;
+  line-height: 1.5;
+}
+
+.step-desc code {
+  background: #1f1f23;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.upload-zone {
+  display: block;
+  border: 1.5px dashed #2c2c31;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.upload-zone:hover {
+  border-color: #5b8def;
+  background: #131720;
+}
+.upload-zone input {
+  display: none;
+}
+.upload-zone-label {
+  font-size: 13px;
+  color: #b4b4bb;
+}
+
+.scene-id-chip {
+  margin-top: 12px;
+  font-size: 12px;
+  font-family: ui-monospace, Menlo, monospace;
+  color: #8b93b8;
+  background: #14161f;
+  border: 1px solid #22263a;
+  padding: 7px 11px;
+  border-radius: 8px;
+  word-break: break-all;
+}
+
+.dataset-ready-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.dataset-ready-text {
+  font-size: 13px;
+  color: #b4b4bb;
+}
+
+.success-banner {
+  margin-top: 12px;
+  background: #0f2016;
+  border: 1px solid #1f5c39;
+  color: #86efac;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+/* --- Viewer --- */
+.viewer-card {
+  height: calc(100vh - 172px);
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.viewer-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.pill {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+.pill-cyan {
+  background: #14161f;
+  color: #8b93b8;
+  border: 1px solid #22263a;
+}
+.pill-green {
+  background: #0f2016;
+  color: #6ee7b7;
+  border: 1px solid #1f5c39;
+}
+
+.viewer-body {
+  flex: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #050506;
+}
+
+.viewer-placeholder {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #55555c;
+  font-size: 14px;
+  text-align: center;
+  padding: 24px;
+}
+
+/* --- Pipeline progress --- */
+.progress-card {
+  margin-top: 16px;
+}
+
+.progress-track {
+  background: #1a1a1e;
+  border-radius: 999px;
+  overflow: hidden;
+  height: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #5b8def;
+  transition: width 0.4s ease;
+}
+.progress-fill-error {
+  background: #f87171;
+}
+
+.progress-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0 0;
+  font-size: 13px;
+}
+
+.stage-chip {
+  color: #d4d4d8;
+  font-weight: 600;
+}
+.stage-chip-error {
+  color: #f87171;
+}
+
+.progress-pct {
+  color: #6b6b73;
+  font-variant-numeric: tabular-nums;
+}
+
+.progress-message {
+  font-size: 12px;
+  color: #6b6b73;
+  margin: 4px 0 0;
+}
+
+.progress-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #5b8def;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+/* --- 3D viewer reveal --- */
+.splat-canvas-wrap {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  position: relative;
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.splat-canvas-wrap.revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.splat-loading-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: #6b6b73;
+  font-size: 13px;
+}
+
+.splat-loading-ring {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #232327;
+  border-top-color: #5b8def;
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.capture-bar {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.capture-hint {
+  font-size: 13px;
+  color: #6b6b73;
+}
+
+/* --- Cột 3: ảnh đã chụp, mỗi ảnh 1 hàng, kéo dài dọc --- */
+.col-shots {
+  position: sticky;
+  top: 24px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+}
+
+.col-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #d4d4d8;
+  margin: 0 0 16px 0;
+}
+
+.shots-empty {
+  font-size: 13px;
+  color: #6b6b73;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.shot-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.shot-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.shot-row-thumb {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #232327;
+  cursor: pointer;
+  display: block;
+  transition: border-color 0.15s ease;
+}
+.shot-row-thumb:hover {
+  border-color: #5b8def;
+}
+
+.shot-download-btn {
+  font-size: 12px;
+  padding: 8px 12px;
+  background: #1a1a1e;
+  color: #d4d4d8;
+  border: 1px solid #2c2c31;
+  width: 100%;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 5, 6, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+}
+
+.modal-content {
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.modal-img {
+  max-width: 90vw;
+  max-height: 76vh;
+  object-fit: contain;
+  border: 1px solid #232327;
+  border-radius: 10px;
+}
